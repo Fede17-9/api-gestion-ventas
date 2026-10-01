@@ -43,7 +43,7 @@ public class UsuarioController {
         usuario.setPassword(request.getContraseña());
         usuario.setRol(Rol.USER);
 
-        Usuario usuarioGuardado = usuarioService.guardar(usuario);
+        Usuario usuarioGuardado = usuarioService.registrar(usuario);
 
         UsuarioResponse response = new UsuarioResponse(
             usuarioGuardado.getId(),
