@@ -20,7 +20,7 @@ public class VentaService {
         return ventaRepository.save(venta);
     }
 
-    public List<Venta> listarodas(){
+    public List<Venta> listartodas(){
         return ventaRepository.findAll();
     }
 
