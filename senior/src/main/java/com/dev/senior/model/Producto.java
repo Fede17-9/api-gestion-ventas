@@ -5,11 +5,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-
-import java.util.List;
-
 import java.math.BigDecimal;
-
 import jakarta.persistence.Column;
 
 @Entity
