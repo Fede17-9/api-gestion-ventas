@@ -10,10 +10,14 @@ import com.dev.senior.dto.UsuarioResponse;
 import com.dev.senior.model.Rol;
 import com.dev.senior.model.Usuario;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 
 @RestController 
@@ -28,6 +32,7 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<UsuarioResponse> crear(@RequestBody UsuarioRequest request){
+
         Usuario usuario = new Usuario();
 
         usuario.setNombre(request.getNombre());
@@ -47,6 +52,21 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
     
+    }
+    
+    @GetMapping
+    public ResponseEntity<List<UsuarioResponse>> listar() {
+        List<UsuarioResponse> usuarios = usuarioService
+        .listarTodos()
+        .stream()
+        .map(usuario -> new UsuarioResponse(usuario.getId(),
+        usuario.getNombre(),
+        usuario.getEmail(),
+        usuario.getRol().name()))
+        .toList();
+
+        return ResponseEntity.ok(usuarios);
+
     }
     
 
